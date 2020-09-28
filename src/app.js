@@ -19,11 +19,6 @@ if (!address) {
   })
 }
 
-
-
-
-
-
 /*
 
 geocode('Uberlândia', (error, data) => {
