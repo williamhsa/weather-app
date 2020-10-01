@@ -38,7 +38,7 @@ app.get('/isabela', (req,res) => {
   res.send({
     name: 'Isabela Scheicher',
     age: 26,
-    descripton: 'Muito gostosa!'
+    descripton: 'Muito linda!'
   })
 })
 
