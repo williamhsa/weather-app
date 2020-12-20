@@ -81,12 +81,30 @@ app.get('/isabela', (req, res) => {
   })
 })
 
-app.get('/help/*', (req, res) => {
+/*app.get('/help/!*', (req, res) => {
   res.send('Curinga do help!')
+})*/
+
+app.get('/help/*', (req, res) => {
+  res.render('404', {
+    title: '404',
+    name: '404 help',
+    errorMessage: 'Help article not found!',
+  })
 })
 
+/*
 app.get('*', (req, res) => {
   res.send('My 404 page!')
+})
+*/
+
+app.get('*', (req, res) => {
+  res.render('404', {
+    title: '404',
+    name: 'Will',
+    errorMessage: 'Page not Found!'
+  })
 })
 
 app.listen(3000, () => {
