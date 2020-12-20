@@ -7,7 +7,7 @@ const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
 // permite que voce defina um valor para uma determinada configuracao expressa
 // handlersbar nos permite a renderizacao de conteudo dinamico,somo capazes de configurar modelos
-// muito semelhantes aos documentos html, que podemos injetar valores especificos dentro de um nome de titulo de texto de ajuda
+// muito semelhantes aos documentos html, que podemos injetar valoremo especificos dentro de um nome de titulo de texto de ajuda
 // ou qualquer outra coisa que seu aplicativo precise.
 app.set('view engine', 'hbs')
 app.use(express.static(publicDirectoryPath))
