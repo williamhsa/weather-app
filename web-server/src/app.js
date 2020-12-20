@@ -8,6 +8,7 @@ const app = express()
 
 // define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
+
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialPath = path.join(__dirname, '../templates/partials')
 
