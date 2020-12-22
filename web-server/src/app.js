@@ -68,9 +68,29 @@ app.get('/help', (req, res) => {
 
 // app.com/weather
 app.get('/weather', (req, res) => {
+  //http://localhost:3000/weather?address=udia
+  if (!req.query.address) {
+    return res.send({
+      error: 'No address found! Please enter a address.'
+    })
+  }
   res.send({
     forecast: 'It is snowing',
-    location: 'Uberlandia'
+    location: req.query.address
+  })
+})
+
+app.get('/products', (req, res) => {
+  //http://localhost:3000/products?search=games&rating=6
+  console.log('query', req.query);
+  console.log('query', req.query.search);
+  if (!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term.'
+    })
+  }
+  res.send({
+    products: []
   })
 })
 
