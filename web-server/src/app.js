@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 // console.log(__dirname)
 // console.log(path.join(__dirname, '../public'))
 
@@ -74,9 +76,22 @@ app.get('/weather', (req, res) => {
       error: 'No address found! Please enter a address.'
     })
   }
-  res.send({
-    forecast: 'It is snowing',
-    location: req.query.address
+  geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+    if (error)  return res.send({error})
+
+    forecast(latitude, longitude, (error, forecastData) => {
+      if (error) return res.send({error}  )
+
+      console.log(location, latitude, longitude)
+      console.log(forecastData)
+      res.send({
+        address: req.query.address,
+        forecast: forecastData,
+        location: location,
+        latitude,
+        longitude,
+      })
+    })
   })
 })
 
