@@ -1,6 +1,8 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 // console.log(__dirname)
 // console.log(path.join(__dirname, '../public'))
 
@@ -43,7 +45,7 @@ app.get('/help', (req, res) => {
   res.render('help', {
     helpText: 'me ajude porra',
     title: 'Help',
-    name: 'Will',
+    name: 'William Henrique',
   })
 })
 
@@ -68,9 +70,42 @@ app.get('/help', (req, res) => {
 
 // app.com/weather
 app.get('/weather', (req, res) => {
+  //http://localhost:3000/weather?address=udia
+  if (!req.query.address) {
+    return res.send({
+      error: 'No address found! Please enter a address.'
+    })
+  }
+  geocode(req.query.address, (error, {latitude, longitude, location} = {}) => {
+    if (error)  return res.send({error})
+
+    forecast(latitude, longitude, (error, forecastData) => {
+      if (error) return res.send({error}  )
+
+      console.log(location, latitude, longitude)
+      console.log(forecastData)
+      res.send({
+        address: req.query.address,
+        forecast: forecastData,
+        location: location,
+        latitude,
+        longitude,
+      })
+    })
+  })
+})
+
+app.get('/products', (req, res) => {
+  //http://localhost:3000/products?search=games&rating=6
+  console.log('query', req.query);
+  console.log('query', req.query.search);
+  if (!req.query.search) {
+    return res.send({
+      error: 'You must provide a search term.'
+    })
+  }
   res.send({
-    forecast: 'It is snowing',
-    location: 'Uberlandia'
+    products: []
   })
 })
 

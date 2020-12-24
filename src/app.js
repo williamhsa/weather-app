@@ -1,4 +1,4 @@
- const geocode = require('./utils/geocode')
+const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 // Goal: Accept location via command line argument
