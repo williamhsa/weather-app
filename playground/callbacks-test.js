@@ -11,13 +11,14 @@ const geocode = (address, callback) => {
       latitude: 0,
       longitude: 0
     }
+    console.log('address', address)
     callback(data)
   }, 2000)
 }
 
 
 geocode('Philadelphia', (data) => {
-  console.log(data);
+  console.log('aqui', data);
 })
 
 // const geocode = (address, callback) => {
@@ -49,6 +50,3 @@ const add = (a, b, callback) => {
 add(1, 4, (sum) => {
   console.log('sum', sum) // Should print: 5
 })
-
-
-

@@ -5,7 +5,7 @@ setTimeout(() => {
 }, 2000)
 
 setTimeout(() => {
-  console.log('0 Second Timer')
+  console.log('0 second Timer')
 }, 0)
 
 console.log('Stopping')

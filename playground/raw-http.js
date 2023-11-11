@@ -14,8 +14,9 @@ const request = http.request(url, (response) => {
 
 
   response.on('end', () => {
-    // console.log(data);
+    console.log(data);
     const body = JSON.parse(data)
+    console.log('aqui')
     console.log(body);
   })
 

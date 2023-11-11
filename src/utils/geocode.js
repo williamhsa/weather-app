@@ -18,7 +18,7 @@ const geocode = (address, callback) => {
         longitude: centerLong[0],
         location: place_name
       })
-    }
+    } 
   })
 
 }
